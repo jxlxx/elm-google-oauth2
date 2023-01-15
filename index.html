@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Google OAuth</title>
+    <script type="text/javascript" src="main.js"></script>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+  </head>
+  <body>
+    <div id="g_id_onload"
+       data-client_id="789723491626-6p01agh94gidiaesvev5saq6c6a30fmn.apps.googleusercontent.com" 
+       data-context="signup"
+       data-ux_mode="popup"
+       data-callback="handleCallBack"
+       data-auto_prompt="false">
+    </div>
+      
+    <div class="g_id_signin"
+       data-type="standard"
+       data-shape="rectangular"
+       data-theme="outline"
+       data-text="signin_with"
+       data-size="large"
+       data-logo_alignment="left">
+    </div>
+    <script type="text/javascript">
+    
+    let elm = document.createElement('div');
+    document.body.appendChild(elm);
+    
+    let app = Elm.Main.init({
+        node: elm,
+    });
+
+    window.handleCallBack = (data) => {
+      app.ports.googleSignIn.send(data.credential)
+    }
+    
+    </script>
+  </body>
+</html>
