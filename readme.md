@@ -5,6 +5,10 @@ The token id is saved in a cookie but in this example app the elm side of things
 
 To do authentication with google in Elm, you need to use ports + js interop. 
 
+
+
+## Usage
+
 To implement this in your own projects, you need:
 
 1. A [Google Client ID](https://support.google.com/cloud/answer/6158849);
@@ -49,6 +53,8 @@ window.handleCallBack = (data) => {
 ```
 
 (the `window` part is important)
+
+
 
 
 # Running the example
