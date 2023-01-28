@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Elm Google OAuth 2.0 - Application </title>
+        <script src="main.js"></script>
+        <script src="https://accounts.google.com/gsi/client" async defer></script>
+    </head>
+    <body>
+    
+    <script>
+   
+        let elm = document.createElement('div');
+        document.body.appendChild(elm);
+        
+        var app = Elm.Main.init({
+          node: elm
+        });
+        
+        window.handleCredentialResponse = (data) => {
+          app.ports.googleSignIn.send(data.credential);
+        }
+
+        let parent = document.getElementById('google-oauth');
+ 
+        let options = {
+          type: 'standard',
+          shape: 'rectangular',
+          theme: 'outline',
+          text: 'continue_with',
+          size: 'large',
+          width: 300,
+          click_listener: handleCredentialResponse
+        };
+        
+        
+        window.onload = function () {
+          google.accounts.id.initialize({
+            client_id: '789723491626-6p01agh94gidiaesvev5saq6c6a30fmn.apps.googleusercontent.com',
+            callback: handleCredentialResponse
+            
+            // // Instead of a callback, you could also redirect the request
+            // ux_mode: 'redirect',
+            // login_uri: 'http://localhost:8000/login'
+          });
+          // google.accounts.id.prompt();
+          google.accounts.id.renderButton(parent, options)
+        };
+                
+    </script>
+    </body>
+</html>

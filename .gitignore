@@ -1,2 +1,6 @@
-elm-stuff
-main.js
+.direnv
+examples/*/elm-stuff
+examples/*/main.js
+
+!.gitignore
+
